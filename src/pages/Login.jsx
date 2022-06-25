@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
 
@@ -35,9 +35,9 @@ class Login extends Component {
     const { name, loggedIn, formFulfilled } = this.state;
     const MIN_CARACTHERS = 3;
     if (loggedIn) return <Loading />;
-    if (formFulfilled) return { component: () => <Navigate to="/search" /> };
+    if (formFulfilled) return <Redirect to="/search" />;
     return (
-      <section data-testid="page-login">
+      <div data-testid="page-login">
         <form onSubmit={ this.handleSubmit }>
           <label htmlFor="input-name">
             <input
@@ -58,7 +58,7 @@ class Login extends Component {
             />
           </label>
         </form>
-      </section>
+      </div>
     );
   }
 }
