@@ -3,14 +3,11 @@
         "browser": true,
         "es2021": true
     },
-    "parser": "@babel/eslint-parser",
     "extends": "trybe-frontend",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest",
-        "requireConfigFile": false,
         "sourceType": "module"
     },
     "plugins": [
