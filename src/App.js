@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
+import Search from './pages/Search';
 
 class App extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={ Login } />
+            <Route path="/search" component={ Search } />
           </Switch>
         </BrowserRouter>
       </main>
