@@ -4,7 +4,6 @@ import { screen,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import * as userAPI from '../services/userAPI';
 import renderPath from './helpers/renderPath';
 
 describe('Formulário para identificação', () => {
