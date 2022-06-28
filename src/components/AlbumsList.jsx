@@ -7,12 +7,12 @@ class AlbumsList extends Component {
     const { albums, artist } = this.props;
     if (albums.length === 0) return <p>Nenhum álbum foi encontrado</p>;
     return (
-      <div>
+      <section>
         <p>{ `Resultado de álbuns de: ${artist}` }</p>
         { albums.map((album) => {
           const { artworkUrl100, collectionId, artistName, collectionName } = album;
           return (
-            <div key={ collectionId }>
+            <section key={ collectionId }>
               <Link
                 to={ `/album/${collectionId}` }
                 data-testid={ `link-to-album-${collectionId}` }
@@ -21,10 +21,10 @@ class AlbumsList extends Component {
               </Link>
               <p>{ collectionName }</p>
               <p>{ artistName }</p>
-            </div>
+            </section>
           );
         })}
-      </div>
+      </section>
     );
   }
 }

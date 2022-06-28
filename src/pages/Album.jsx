@@ -48,7 +48,7 @@ class Album extends Component {
         {loading
           ? <Loading />
           : (
-            <div data-testid="page-album">
+            <section data-testid="page-album">
               <img src={ songs[0].artworkUrl100 } alt={ songs[0].artistName } />
               <h3 data-testid="album-name">{songs[0].collectionName}</h3>
               <h4 data-testid="artist-name">{songs[0].artistName}</h4>
@@ -65,7 +65,7 @@ class Album extends Component {
                   </li>
                 ))}
               </ol>
-            </div>)}
+            </section>)}
       </div>
     );
   }

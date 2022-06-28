@@ -55,7 +55,7 @@ class ProfileEdit extends Component {
         {loading
           ? <Loading />
           : (
-            <div data-testid="page-profile-edit">
+            <section data-testid="page-profile-edit">
               <form onSubmit={ this.handleSubmit }>
                 <img src={ image } alt={ name } />
                 <input
@@ -102,7 +102,7 @@ class ProfileEdit extends Component {
                   Salvar
                 </button>
               </form>
-            </div>
+            </section>
           )}
         { formFulfilled && <Redirect to="/profile" />}
       </div>

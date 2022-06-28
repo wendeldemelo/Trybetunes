@@ -37,7 +37,7 @@ class Login extends Component {
     if (loggedIn) return <Loading />;
     if (formFulfilled) return <Redirect to="/search" />;
     return (
-      <div data-testid="page-login">
+      <section data-testid="page-login">
         <form onSubmit={ this.handleSubmit }>
           <label htmlFor="input-name">
             <input
@@ -46,7 +46,7 @@ class Login extends Component {
               onChange={ this.handleChange }
               value={ name }
               name="name"
-              placeholder="Nome"
+              placeholder="Nome do usuário"
             />
           </label>
           <label htmlFor="input-button">
@@ -58,7 +58,7 @@ class Login extends Component {
             />
           </label>
         </form>
-      </div>
+      </section>
     );
   }
 }

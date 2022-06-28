@@ -37,8 +37,8 @@ class Profile extends Component {
         {loading
           ? <Loading />
           : (
-            <div>
-              <div>
+            <section>
+              <section>
                 <img data-testid="profile-image" src={ image } alt="user" />
                 <h3>Nome</h3>
                 <p>{ name }</p>
@@ -55,8 +55,8 @@ class Profile extends Component {
                     Editar perfil
                   </p>
                 </Link>
-              </div>
-            </div>)}
+              </section>
+            </section>)}
       </div>
     );
   }
