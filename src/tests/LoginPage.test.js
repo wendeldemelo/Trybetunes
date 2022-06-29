@@ -1,4 +1,5 @@
-import { screen,
+import { render,
+  screen,
   waitFor, 
   waitForElementToBeRemoved 
 } from '@testing-library/react';
@@ -67,10 +68,10 @@ describe('Formulário para identificação', () => {
         () => expect(screen.queryAllByText('Carregando...')).toHaveLength(0),
         { timeout: 3000 }
       );
-  
+
       userEvent.type(screen.getByTestId('login-name-input'), 'Name');
       userEvent.click(screen.getByTestId('login-submit-button'));
-  
+      
       const loadingElement = screen.getByText('Carregando...');
       expect(loadingElement).toBeInTheDocument();
   
