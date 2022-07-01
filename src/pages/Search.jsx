@@ -49,23 +49,29 @@ class Search extends Component {
       <div data-testid="page-search">
         <Header />
         <form onSubmit={ this.handleSubmit }>
-          <label htmlFor="input-search">
-            <input
-              data-testid="search-artist-input"
-              type="text"
-              onChange={ this.handleChange }
-              value={ inputSearchValue }
-              placeholder="Nome da Banda ou Artista"
-            />
-          </label>
-          <label htmlFor="search-button">
-            <input
-              data-testid="search-artist-button"
+          <div className="mb-3">
+            <label htmlFor="input-search">
+              <input
+                data-testid="search-artist-input"
+                id="input-search"
+                type="text"
+                onChange={ this.handleChange }
+                value={ inputSearchValue }
+                placeholder="Nome da Banda ou Artista"
+                className="form-control"
+              />
+            </label>
+          </div>
+          <div className="d-grid">
+            <button
               type="submit"
-              value="Pesquisar"
+              className="btn btn-primary"
+              data-testid="search-artist-button"
               disabled={ inputSearchValue.length < MIN_CARACTHERS }
-            />
-          </label>
+            >
+              Pesquisar
+            </button>
+          </div>
         </form>
         <div>
           { loading && <Loading /> }

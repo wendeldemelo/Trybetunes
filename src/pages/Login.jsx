@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
+import './Login.css';
 
 class Login extends Component {
   constructor() {
@@ -17,8 +19,9 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange({ target }) {
-    this.setState({ [target.name]: target.value });
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   async handleSubmit() {
@@ -37,28 +40,41 @@ class Login extends Component {
     if (loggedIn) return <Loading />;
     if (formFulfilled) return <Redirect to="/search" />;
     return (
-      <section data-testid="page-login">
-        <form onSubmit={ this.handleSubmit }>
-          <label htmlFor="input-name">
+      <form onSubmit={ this.handleSubmit }>
+        <img
+          className="mb-4"
+          src="https://d29fhpw069ctt2.cloudfront.net/icon/image/37740/preview.svg"
+          alt=""
+          width="72"
+          height="57"
+        />
+        <h3>Trybetunes</h3>
+        <div className="mb-3">
+          <label htmlFor="input-username">
+            Nome do Usuário
             <input
               data-testid="login-name-input"
+              id="input-username"
               type="text"
               onChange={ this.handleChange }
               value={ name }
               name="name"
-              placeholder="Nome do usuário"
+              placeholder="Jane Doe"
+              className="form-control"
             />
           </label>
-          <label htmlFor="input-button">
-            <input
-              data-testid="login-submit-button"
-              type="submit"
-              value="Entrar"
-              disabled={ name.length < MIN_CARACTHERS }
-            />
-          </label>
-        </form>
-      </section>
+        </div>
+        <div className="d-grid">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            data-testid="login-submit-button"
+            disabled={ name.length < MIN_CARACTHERS }
+          >
+            Entrar
+          </button>
+        </div>
+      </form>
     );
   }
 }

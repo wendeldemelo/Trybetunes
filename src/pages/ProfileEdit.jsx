@@ -57,50 +57,74 @@ class ProfileEdit extends Component {
           : (
             <section data-testid="page-profile-edit">
               <form onSubmit={ this.handleSubmit }>
-                <img src={ image } alt={ name } />
-                <input
-                  data-testid="edit-input-image"
-                  value={ image }
-                  type="text"
-                  name="image"
-                  onChange={ this.handleChange }
-                />
-                <p>Nome:</p>
-                <input
-                  data-testid="edit-input-name"
-                  value={ name }
-                  type="text"
-                  name="name"
-                  onChange={ this.handleChange }
-                />
-                <p>E-mail:</p>
-                <input
-                  data-testid="edit-input-email"
-                  value={ email }
-                  type="text"
-                  name="email"
-                  onChange={ this.handleChange }
-                />
-                <p>Descrição:</p>
-                <textarea
-                  data-testid="edit-input-description"
-                  value={ description }
-                  type="text"
-                  name="description"
-                  onChange={ this.handleChange }
-                />
-                <button
-                  data-testid="edit-button-save"
-                  type="submit"
-                  disabled={
-                    name.length === 0
+                <div className="mb-3">
+                  <label htmlFor="edit-input-image">
+                    Foto
+                    <input
+                      id="edit-input-image"
+                      type="text"
+                      onChange={ this.handleChange }
+                      className="form-control"
+                      data-testid="edit-input-image"
+                      value={ image }
+                      name="image"
+                      placeholder="Url da imagem"
+                    />
+                  </label>
+                  <label htmlFor="edit-input-username">
+                    Nome do Usuário
+                    <input
+                      id="edit-input-username"
+                      type="text"
+                      onChange={ this.handleChange }
+                      className="form-control"
+                      data-testid="edit-input-name"
+                      value={ name }
+                      name="name"
+                      placeholder="Jane Doe"
+                    />
+                  </label>
+                  <label htmlFor="edit-input-email">
+                    E-mail
+                    <input
+                      id="edit-input-email"
+                      type="email"
+                      className="form-control"
+                      data-testid="edit-input-email"
+                      value={ email }
+                      name="email"
+                      placeholder="janedoe@exemplo.com"
+                      onChange={ this.handleChange }
+                    />
+                  </label>
+                  <label htmlFor="edit-input-description">
+                    Descrição
+                    <textarea
+                      id="edit-input-description"
+                      className="form-control"
+                      data-testid="edit-input-description"
+                      value={ description }
+                      type="text"
+                      name="description"
+                      onChange={ this.handleChange }
+                    />
+                  </label>
+                </div>
+                <div className="d-grid">
+                  <button
+                    className="btn btn-primary"
+                    data-testid="edit-button-save"
+                    type="submit"
+                    disabled={
+                      name.length === 0
                     || email.length === 0
                     || image.length === 0
                     || description.length === 0
-                  }
-                >
-                  Salvar
-                </button>
+                    }
+                  >
+                    Salvar
+                  </button>
+                </div>
               </form>
             </section>
           )}

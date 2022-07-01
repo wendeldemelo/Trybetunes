@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 
 class Loading extends Component {
   render() {
     return (
       <section>
-        <h1>Carregando...</h1>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Carregando...</span>
+        </Spinner>
       </section>
     );
   }

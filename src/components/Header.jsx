@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Nav, Container, Navbar } from 'react-bootstrap';
 import Loading from './Loading';
 import { getUser } from '../services/userAPI';
 
@@ -30,23 +31,38 @@ class Header extends Component {
     if (loading) return <Loading />;
     return (
       <div data-testid="header-component">
-        <header data-testid="header-user-name">
-          <p>Usuário:</p>
-          <p>{ name }</p>
-        </header>
-        <nav>
-          <ul>
-            <Link to="/search">
-              <li data-testid="link-to-search">Search</li>
-            </Link>
-            <Link to="/favorites">
-              <li data-testid="link-to-favorites">Favorites</li>
-            </Link>
-            <Link to="/profile">
-              <li data-testid="link-to-profile">Profile</li>
-            </Link>
-          </ul>
-        </nav>
+        <Navbar bg="light" variant="light" fixed="top">
+          <Container>
+            <Navbar.Brand href="/">
+              <img
+                className="mb-4"
+                src="https://d29fhpw069ctt2.cloudfront.net/icon/image/37740/preview.svg"
+                alt=""
+                width="72"
+                height="57"
+              />
+              Trybetunes
+            </Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <Navbar.Text>
+                Usuário:
+                {' '}
+                { name }
+              </Navbar.Text>
+            </Navbar.Collapse>
+            <Nav className="me-auto">
+              <Nav.Link href="/search" data-testid="link-to-search">Buscar</Nav.Link>
+              <Nav.Link
+                href="/favorites"
+                data-testid="link-to-favorites"
+              >
+                Favoritos
+              </Nav.Link>
+              <Nav.Link href="/profile" data-testid="link-to-profile">Perfil</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
       </div>
     );
   }
