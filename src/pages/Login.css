@@ -1,16 +1,5 @@
-@media all and ( min-width : 480px ) {
-
-  .Login {
-    padding: 60px 0;
-  }
-
-  .Login form {
-    margin: 0 auto;
-    max-width: 320px;
-  }
-}
-
-img, svg {
-  vertical-align: middle;
-  width: 100%;
+.container-login {
+  margin: 12%;
+  padding: 5%;
+  text-align: center;
 }

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
 import './Login.css';
+import logo from '../logo.png';
 
 class Login extends Component {
   constructor() {
@@ -19,9 +20,8 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    event.preventDefault();
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange({ target }) {
+    this.setState({ [target.name]: target.value });
   }
 
   async handleSubmit() {
@@ -40,41 +40,51 @@ class Login extends Component {
     if (loggedIn) return <Loading />;
     if (formFulfilled) return <Redirect to="/search" />;
     return (
-      <form onSubmit={ this.handleSubmit }>
-        <img
-          className="mb-4"
-          src="https://d29fhpw069ctt2.cloudfront.net/icon/image/37740/preview.svg"
-          alt=""
-          width="72"
-          height="57"
-        />
-        <h3>Trybetunes</h3>
-        <div className="mb-3">
-          <label htmlFor="input-username">
-            Nome do Usuário
-            <input
-              data-testid="login-name-input"
-              id="input-username"
-              type="text"
-              onChange={ this.handleChange }
-              value={ name }
-              name="name"
-              placeholder="Jane Doe"
-              className="form-control"
+      <Container
+        data-testid="page-login"
+        className="container-login"
+      >
+        <Row>
+          <Col>
+            <img
+              alt=""
+              src={ logo }
+              width="150"
+              height="150"
             />
-          </label>
-        </div>
-        <div className="d-grid">
-          <button
-            type="submit"
-            className="btn btn-primary"
-            data-testid="login-submit-button"
-            disabled={ name.length < MIN_CARACTHERS }
-          >
-            Entrar
-          </button>
-        </div>
-      </form>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h3>Trybetunes</h3>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col xs lg="3">
+            <Form onSubmit={ this.handleSubmit }>
+              <Form.Group className="mb-3" controlId="input-username">
+                <Form.Label>Nome do usuário</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Jane Doe"
+                  data-testid="login-name-input"
+                  onChange={ this.handleChange }
+                  value={ name }
+                  name="name"
+                />
+              </Form.Group>
+              <Button
+                variant="primary"
+                type="submit"
+                data-testid="login-submit-button"
+                disabled={ name.length < MIN_CARACTHERS }
+              >
+                Entrar
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
