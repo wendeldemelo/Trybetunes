@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Container, Card, ListGroup, Row, Col } from 'react-bootstrap';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import getMusics from '../services/musicsAPI';
+import './Album.css';
 
 class Album extends Component {
   constructor() {
@@ -48,24 +50,58 @@ class Album extends Component {
         {loading
           ? <Loading />
           : (
-            <section data-testid="page-album">
-              <img src={ songs[0].artworkUrl100 } alt={ songs[0].artistName } />
-              <h3 data-testid="album-name">{songs[0].collectionName}</h3>
-              <h4 data-testid="artist-name">{songs[0].artistName}</h4>
-              <ol>
-                { songs.slice(1).map((song) => (
-                  <li key={ song.trackId }>
-                    <MusicCard
-                      checked={ favorites
-                        .some((track) => track.trackId === song.trackId) }
-                      key={ song.trackId }
-                      song={ song }
-                      onChange={ this.handleFavorites }
-                    />
-                  </li>
-                ))}
-              </ol>
-            </section>)}
+            <div
+              data-testid="page-album"
+              className="album-container"
+            >
+              <Container>
+                <Row>
+                  <Col xs={ 6 } md={ 4 }>
+                    <Card style={ { width: '18rem' } }>
+                      <Card.Img
+                        variant="top"
+                        src={ songs[0].artworkUrl100 }
+                        alt={ songs[0].artistName }
+                      />
+                      <Card.Body>
+                        <Card.Title
+                          data-testid="album-name"
+                        >
+                          {songs[0].collectionName}
+                        </Card.Title>
+                        <Card.Subtitle
+                          className="mb-2 text-muted"
+                          data-testid="artist-name"
+                        >
+                          {songs[0].artistName}
+                        </Card.Subtitle>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col xs={ 6 } md={ 4 }>
+                    <Card style={ { width: '26rem' } }>
+                      <ol>
+                        <ListGroup variant="flush">
+                          { songs.slice(1).map((song) => (
+                            <ListGroup.Item key={ song.trackId }>
+                              <li>
+                                <MusicCard
+                                  checked={ favorites
+                                    .some((track) => track.trackId === song.trackId) }
+                                  key={ song.trackId }
+                                  song={ song }
+                                  onChange={ this.handleFavorites }
+                                />
+                              </li>
+                            </ListGroup.Item>
+                          ))}
+                        </ListGroup>
+                      </ol>
+                    </Card>
+                  </Col>
+                </Row>
+              </Container>
+            </div>)}
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Container, Card, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser } from '../services/userAPI';
+import './Profile.css';
 
 class Profile extends Component {
   constructor() {
@@ -37,29 +38,45 @@ class Profile extends Component {
         {loading
           ? <Loading />
           : (
-            <section>
-              <section>
-                <img data-testid="profile-image" src={ image } alt="user-img" />
-                <h3>Nome</h3>
-                <p>{ name }</p>
-                <h4>
-                  E-mail
-                </h4>
-                <p>{ email }</p>
-                <h4>
-                  Descrição
-                </h4>
-                <p>{ description }</p>
-                <Link to="/profile/edit">
-                  <p>
-                    Editar perfil
-                  </p>
-                </Link>
-              </section>
-            </section>)}
+            <Container className="profile">
+              <Card style={ { width: '20rem' } }>
+                <Card.Img
+                  variant="top"
+                  src={ image }
+                  alt="user-img"
+                  data-testid="profile-image"
+                />
+                <Card.Body>
+                  <Card.Title>{ name }</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">{ email }</Card.Subtitle>
+                  <Card.Text>
+                    { description }
+                  </Card.Text>
+                  <Card.Link href="/profile/edit">
+                    <Button variant="primary">Editar Perfil</Button>
+                  </Card.Link>
+                </Card.Body>
+              </Card>
+            </Container>)}
       </div>
     );
   }
 }
 
 export default Profile;
+
+/* <Container>
+<Card style={{ width: '30rem' }}>
+  <Card.Img variant="top" src={ image } alt="user-img" data-testid="profile-image"/>
+  <Card.Body>
+    <Card.Title>{ name }</Card.Title>
+    <Card.Subtitle className="mb-2 text-muted">{ email }</Card.Subtitle>
+    <Card.Text>
+    { description }
+    </Card.Text>
+    <Card.Link href="/profile/edit">
+    <Button variant="primary">Editar Perfil</Button>
+    </Card.Link>
+  </Card.Body>
+</Card>
+</Container> */

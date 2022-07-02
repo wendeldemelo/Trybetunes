@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Container, Card, ListGroup } from 'react-bootstrap';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import './Favorites.css';
 
 class Favorites extends Component {
   constructor() {
@@ -40,18 +42,45 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        Músicas Favoritas:
-        {loading ? <Loading /> : favoriteSongs.map((song) => (
-          <MusicCard
-            key={ song.trackId }
-            onChange={ this.removeFavoriteSongs }
-            checked
-            song={ song }
-          />
-        ))}
+        <Container className="favorites-list">
+          <h3>Músicas Favoritas:</h3>
+        </Container>
+        <Container>
+          <Card style={ { width: '26rem' } }>
+            <ListGroup variant="flush">
+              {loading ? <Loading /> : favoriteSongs.map((song) => (
+                <ListGroup.Item key={ song.trackId }>
+                  <MusicCard
+                    key={ song.trackId }
+                    onChange={ this.removeFavoriteSongs }
+                    checked
+                    song={ song }
+                  />
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Card>
+        </Container>
       </div>
     );
   }
 }
 
 export default Favorites;
+
+/* <Container>
+<Card style={ { width: '26rem' } }>
+                        <ListGroup variant="flush">
+                        {loading ? <Loading /> : favoriteSongs.map((song) => (
+                            <ListGroup.Item key={ song.trackId }>
+                                <MusicCard
+            key={ song.trackId }
+            onChange={ this.removeFavoriteSongs }
+            checked
+            song={ song }
+          />
+                            </ListGroup.Item>
+                          ))}
+                        </ListGroup>
+                    </Card>
+                    </Container> */
