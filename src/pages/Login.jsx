@@ -12,6 +12,9 @@ class Login extends Component {
 
     this.state = {
       name: '',
+      image: '',
+      email: '',
+      description: '',
       loggedIn: false,
       formFulfilled: false,
     };
@@ -25,9 +28,13 @@ class Login extends Component {
   }
 
   async handleSubmit() {
-    const { name } = this.state;
+    const { name, email, description } = this.state;
+    let { image } = this.state;
     this.setState({ loggedIn: true });
-    await createUser({ name });
+    if (!image || image === '') {
+      image = 'https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png';
+    }
+    await createUser({ name, image, email, description });
     this.setState({
       loggedIn: false,
       formFulfilled: true,
@@ -35,7 +42,7 @@ class Login extends Component {
   }
 
   render() {
-    const { name, loggedIn, formFulfilled } = this.state;
+    const { name, image, email, description, loggedIn, formFulfilled } = this.state;
     const MIN_CARACTHERS = 3;
     if (loggedIn) return <Loading />;
     if (formFulfilled) return <Redirect to="/search" />;
@@ -63,7 +70,7 @@ class Login extends Component {
           <Col xs lg="3">
             <Form onSubmit={ this.handleSubmit }>
               <Form.Group className="mb-3" controlId="input-username">
-                <Form.Label>Nome do usuário</Form.Label>
+                <Form.Label>Nome do usuário *</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Jane Doe"
@@ -71,6 +78,43 @@ class Login extends Component {
                   onChange={ this.handleChange }
                   value={ name }
                   name="name"
+                />
+                <Form.Text className="text-muted">
+                  Seu nome de usuário deve conter no mínimo 3 caracteres.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="input-email">
+                <Form.Label>E-mail</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="janedoe@gmail.com"
+                  data-testid="login-email-input"
+                  onChange={ this.handleChange }
+                  value={ email }
+                  name="email"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="input-img">
+                <Form.Label>Foto de perfil</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="https://www.psicosignificar.psc.br/wp-content/uploads/elementor/thumbs/jane-doe-de-blindspot-osma0uxt4hy3vs1lna1dtmrvr396jc17irtzmslf0a.jpeg"
+                  data-testid="login-img-input"
+                  onChange={ this.handleChange }
+                  value={ image }
+                  name="image"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="input-description">
+                <Form.Label>Descrição</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={ 4 }
+                  placeholder="Sou uma desconhecida, tentando me encontrar."
+                  data-testid="login-description-input"
+                  onChange={ this.handleChange }
+                  value={ description }
+                  name="description"
                 />
               </Form.Group>
               <Button

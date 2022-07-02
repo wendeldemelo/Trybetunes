@@ -11,6 +11,7 @@ class Header extends Component {
 
     this.state = {
       name: '',
+      image: '',
       loading: false,
     };
 
@@ -24,11 +25,15 @@ class Header extends Component {
   userHeader() {
     this.setState({ loading: true });
     getUser()
-      .then((response) => this.setState({ name: response.name, loading: false }));
+      .then((response) => this.setState({
+        name: response.name,
+        image: response.image,
+        loading: false,
+      }));
   }
 
   render() {
-    const { name, loading } = this.state;
+    const { name, image, loading } = this.state;
     if (loading) return <Loading />;
     return (
       <Navbar bg="dark" variant="dark">
@@ -45,18 +50,20 @@ class Header extends Component {
             Trybetunes
           </Navbar.Brand>
           <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              Usuário:
-              {' '}
-              { name }
-            </Navbar.Text>
-          </Navbar.Collapse>
+          <Navbar.Collapse className="justify-content-end" />
           <Nav className="me-auto">
             <Nav.Link href="/search">Buscar</Nav.Link>
             <Nav.Link href="/favorites">Favoritos</Nav.Link>
-            <Nav.Link href="/profile">Perfil</Nav.Link>
           </Nav>
+          <Navbar.Brand href="/profile">
+            <img
+              alt={ name }
+              src={ image }
+              width="30"
+              height="30"
+              className="d-inline-block align-top rounded"
+            />
+          </Navbar.Brand>
         </Container>
       </Navbar>
     );

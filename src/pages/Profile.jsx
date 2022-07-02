@@ -39,7 +39,7 @@ class Profile extends Component {
           : (
             <section>
               <section>
-                <img data-testid="profile-image" src={ image } alt="user" />
+                <img data-testid="profile-image" src={ image } alt="user-img" />
                 <h3>Nome</h3>
                 <p>{ name }</p>
                 <h4>
