@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ToggleButton } from 'react-bootstrap';
 
 class MusicCard extends Component {
   constructor() {
@@ -22,19 +23,19 @@ class MusicCard extends Component {
           <track kind="captions" />
           O seu audio não suporta o elemento
         </audio>
-        <label
+        <ToggleButton
           htmlFor={ song.trackId }
           data-testid={ `checkbox-music-${song.trackId}` }
+          className="mb-2"
+          id={ song.trackId }
+          type="checkbox"
+          variant="outline-success"
+          checked={ checked }
+          value={ song }
+          onChange={ this.handleChange }
         >
-          Favorita
-          <input
-            checked={ checked }
-            type="checkbox"
-            value={ song }
-            id={ song.trackId }
-            onChange={ this.handleChange }
-          />
-        </label>
+          Favoritar
+        </ToggleButton>
       </section>
     );
   }
@@ -49,3 +50,16 @@ MusicCard.propTypes = PropTypes.shape({
 }).isRequired;
 
 export default MusicCard;
+
+/*  <ToggleButton
+  className="mb-2"
+  id={ song.trackId }
+  type="checkbox"
+  variant="outline-primary"
+  checked={ checked }
+  value={ song }
+  onChange={ this.handleChange }
+>
+  Favorita
+</ToggleButton>;
+*/
