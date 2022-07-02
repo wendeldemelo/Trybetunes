@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import { Nav, Container, Navbar } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import Loading from './Loading';
 import { getUser } from '../services/userAPI';
+import logo from '../logo.png';
 
 class Header extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class Header extends Component {
 
     this.state = {
       name: '',
+      image: '',
       loading: false,
     };
 
@@ -23,47 +25,47 @@ class Header extends Component {
   userHeader() {
     this.setState({ loading: true });
     getUser()
-      .then((response) => this.setState({ name: response.name, loading: false }));
+      .then((response) => this.setState({
+        name: response.name,
+        image: response.image,
+        loading: false,
+      }));
   }
 
   render() {
-    const { name, loading } = this.state;
+    const { name, image, loading } = this.state;
     if (loading) return <Loading />;
     return (
-      <div data-testid="header-component">
-        <Navbar bg="light" variant="light" fixed="top">
-          <Container>
-            <Navbar.Brand href="/">
-              <img
-                className="mb-4"
-                src="https://d29fhpw069ctt2.cloudfront.net/icon/image/37740/preview.svg"
-                alt=""
-                width="72"
-                height="57"
-              />
-              Trybetunes
-            </Navbar.Brand>
-            <Navbar.Toggle />
-            <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
-                Usuário:
-                {' '}
-                { name }
-              </Navbar.Text>
-            </Navbar.Collapse>
-            <Nav className="me-auto">
-              <Nav.Link href="/search" data-testid="link-to-search">Buscar</Nav.Link>
-              <Nav.Link
-                href="/favorites"
-                data-testid="link-to-favorites"
-              >
-                Favoritos
-              </Nav.Link>
-              <Nav.Link href="/profile" data-testid="link-to-profile">Perfil</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-      </div>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">
+            <img
+              alt=""
+              src={ logo }
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />
+            {' '}
+            Trybetunes
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end" />
+          <Nav className="me-auto">
+            <Nav.Link href="/search">Buscar</Nav.Link>
+            <Nav.Link href="/favorites">Favoritos</Nav.Link>
+          </Nav>
+          <Navbar.Brand href="/profile">
+            <img
+              alt={ name }
+              src={ image }
+              width="30"
+              height="30"
+              className="d-inline-block align-top rounded"
+            />
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
     );
   }
 }
