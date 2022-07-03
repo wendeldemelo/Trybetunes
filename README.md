@@ -10,7 +10,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o projeto a partir 
 
 # Sumário
 
-- [Boas vindas ao repositório do projeto TrybeTunes!](#boas-vindas-ao-repositório-do-projeto-trybetunes)
+- [Boas vindas ao repositório do projeto TrybeTunes!!](#boas-vindas-ao-repositório-do-projeto-trybetunes)
 - [Sumário](#sumário)
 - [Habilidades](#habilidades)
   - [O que foi desenvolvido](#o-que-foi-desenvolvido)
