@@ -4,7 +4,7 @@
 
 Aqui você vai encontrar os detalhes de como foi estruturado o projeto a partir desse repositório.
 
-**Para acessar a aplicação em execução clique aqui (https://wendeldemelo.github.io/Shopping-Cart/)**
+**Para acessar a aplicação em execução clique aqui (https://app-wendel-trybetunes.herokuapp.com/)**
 
 ---
 
