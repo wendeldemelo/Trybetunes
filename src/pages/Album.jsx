@@ -56,7 +56,7 @@ class Album extends Component {
             >
               <Container>
                 <Row>
-                  <Col xs={ 6 } md={ 4 }>
+                  <Col xs={ 8 } md={ 4 }>
                     <Card style={ { width: '18rem' } }>
                       <Card.Img
                         variant="top"

@@ -88,7 +88,7 @@ class ProfileEdit extends Component {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="input-edit-username">
-                      <Form.Label>Nome do usuário</Form.Label>
+                      <Form.Label>Nome do usuário *</Form.Label>
                       <Form.Control
                         data-testid="edit-input-name"
                         value={ name }
@@ -98,7 +98,7 @@ class ProfileEdit extends Component {
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="input-edit-email">
-                      <Form.Label>E-mail</Form.Label>
+                      <Form.Label>E-mail *</Form.Label>
                       <Form.Control
                         type="email"
                         data-testid="edit-input-email"
@@ -109,7 +109,7 @@ class ProfileEdit extends Component {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="input-description">
-                      <Form.Label>Descrição</Form.Label>
+                      <Form.Label>Descrição *</Form.Label>
                       <Form.Control
                         as="textarea"
                         rows={ 4 }
