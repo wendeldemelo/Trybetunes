@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser, updateUser } from '../services/userAPI';
+import './ProfileEdit.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -55,54 +57,86 @@ class ProfileEdit extends Component {
         {loading
           ? <Loading />
           : (
-            <div data-testid="page-profile-edit">
-              <form onSubmit={ this.handleSubmit }>
-                <img src={ image } alt={ name } />
-                <input
-                  data-testid="edit-input-image"
-                  value={ image }
-                  type="text"
-                  name="image"
-                  onChange={ this.handleChange }
-                />
-                <p>Nome:</p>
-                <input
-                  data-testid="edit-input-name"
-                  value={ name }
-                  type="text"
-                  name="name"
-                  onChange={ this.handleChange }
-                />
-                <p>E-mail:</p>
-                <input
-                  data-testid="edit-input-email"
-                  value={ email }
-                  type="text"
-                  name="email"
-                  onChange={ this.handleChange }
-                />
-                <p>Descrição:</p>
-                <textarea
-                  data-testid="edit-input-description"
-                  value={ description }
-                  type="text"
-                  name="description"
-                  onChange={ this.handleChange }
-                />
-                <button
-                  data-testid="edit-button-save"
-                  type="submit"
-                  disabled={
-                    name.length === 0
+            <Container
+              data-testid="page-profile-edit"
+              className="profile-edit-container"
+            >
+              <Row>
+                <Col>
+                  <Col>
+                    <img
+                      width="150"
+                      height="150"
+                      src={ image }
+                      alt={ name }
+                    />
+                  </Col>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs lg="3">
+                  <Form onSubmit={ this.handleSubmit } className="form-profile-edit">
+                    <Form.Group className="mb-3" controlId="input-edit-img">
+                      <Form.Label>Foto de perfil</Form.Label>
+                      <Form.Control
+                        data-testid="edit-input-image"
+                        value={ image }
+                        type="text"
+                        name="image"
+                        onChange={ this.handleChange }
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="input-edit-username">
+                      <Form.Label>Nome do usuário</Form.Label>
+                      <Form.Control
+                        data-testid="edit-input-name"
+                        value={ name }
+                        type="text"
+                        name="name"
+                        onChange={ this.handleChange }
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="input-edit-email">
+                      <Form.Label>E-mail</Form.Label>
+                      <Form.Control
+                        type="email"
+                        data-testid="edit-input-email"
+                        value={ email }
+                        name="email"
+                        onChange={ this.handleChange }
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="input-description">
+                      <Form.Label>Descrição</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={ 4 }
+                        data-testid="edit-input-description"
+                        value={ description }
+                        type="text"
+                        name="description"
+                        onChange={ this.handleChange }
+                      />
+                    </Form.Group>
+                    <Button
+                      variant="primary"
+                      data-testid="edit-button-save"
+                      type="submit"
+                      disabled={
+                        name.length === 0
                     || email.length === 0
                     || image.length === 0
                     || description.length === 0
-                  }
-                >
-                  Salvar
-                </button>
-              </form>
-            </div>
+                      }
+                    >
+                      Salvar
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+            </Container>
           )}
         { formFulfilled && <Redirect to="/profile" />}
       </div>
