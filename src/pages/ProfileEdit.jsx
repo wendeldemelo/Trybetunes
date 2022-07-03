@@ -77,7 +77,7 @@ class ProfileEdit extends Component {
                 <Col xs lg="3">
                   <Form onSubmit={ this.handleSubmit } className="form-profile-edit">
                     <Form.Group className="mb-3" controlId="input-edit-img">
-                      <Form.Label>Foto de perfil</Form.Label>
+                      <Form.Label>Foto de perfil *</Form.Label>
                       <Form.Control
                         data-testid="edit-input-image"
                         value={ image }
