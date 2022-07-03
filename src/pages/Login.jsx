@@ -98,7 +98,7 @@ class Login extends Component {
                 <Form.Label>Foto de perfil</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="https://www.psicosignificar.psc.br/wp-content/uploads/elementor/thumbs/jane-doe-de-blindspot-osma0uxt4hy3vs1lna1dtmrvr396jc17irtzmslf0a.jpeg"
+                  placeholder="URL da imagem"
                   data-testid="login-img-input"
                   onChange={ this.handleChange }
                   value={ image }
