@@ -5,7 +5,7 @@ class NotFound extends Component {
   render() {
     return (
       <Alert variant="danger" dismissible>
-        <Alert.Heading>Oops! Erro!</Alert.Heading>
+        <Alert.Heading>Ooops! Erro!</Alert.Heading>
         <p>
           Página não encontrada. Mude a rota e tente novamente.
         </p>
