@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Card, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
@@ -52,9 +53,14 @@ class Profile extends Component {
                   <Card.Text>
                     { description }
                   </Card.Text>
-                  <Card.Link href="/profile/edit">
-                    <Button variant="primary">Editar Perfil</Button>
-                  </Card.Link>
+                  <Link to="/profile/edit">
+                    <Button
+                      variant="primary"
+                      data-testid="profile-edit-btn"
+                    >
+                      Editar Perfil
+                    </Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </Container>)}

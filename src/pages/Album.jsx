@@ -45,13 +45,12 @@ class Album extends Component {
   render() {
     const { loading, songs, favorites } = this.state;
     return (
-      <div>
+      <div data-testid="page-album">
         <Header />
         {loading
           ? <Loading />
           : (
             <div
-              data-testid="page-album"
               className="album-container"
             >
               <Container>

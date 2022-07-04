@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import './AlbumsList.css';
 
@@ -25,9 +26,12 @@ class AlbumsList extends Component {
               return (
                 <Col key={ collectionId }>
                   <Card style={ { width: '18rem' } }>
-                    <Card.Link href={ `/album/${collectionId}` }>
+                    <Link
+                      to={ `/album/${collectionId}` }
+                      data-testid={ `link-to-album-${collectionId}` }
+                    >
                       <Card.Img variant="top" src={ artworkUrl100 } />
-                    </Card.Link>
+                    </Link>
                     <Card.Body>
                       <Card.Title>{ collectionName }</Card.Title>
                       <Card.Subtitle
