@@ -2,7 +2,6 @@ import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import * as musicsAPI from '../services/musicsAPI';
-import * as favoriteSongsAPI from '../services/favoriteSongsAPI';
 import renderPath from './helpers/renderPath';
 import { defaultUser, musicAPIDefaultResponse, favoriteSongsList } from './mocks';
 
@@ -232,7 +231,7 @@ describe('Lista de músicas favoritas', () => {
 
       );
 
-      const checkboxes = screen.getAllByLabelText('Favorita');
+      const checkboxes = screen.getAllByLabelText('Favoritar');
 
       expect(screen.getByText('Track Name 1')).toBeInTheDocument();
       expect(screen.getByText('Track Name 2')).toBeInTheDocument();
@@ -251,7 +250,7 @@ describe('Lista de músicas favoritas', () => {
       expect(screen.getByText('Track Name 2')).toBeInTheDocument();
       expect(screen.getByText('Track Name 3')).toBeInTheDocument();
       expect(screen.getAllByTestId('audio-component')).toHaveLength(2);
-      expect(screen.getAllByLabelText('Favorita')).toHaveLength(2);
+      expect(screen.getAllByLabelText('Favoritar')).toHaveLength(2);
     });
 });
 

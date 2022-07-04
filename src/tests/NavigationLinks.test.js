@@ -9,7 +9,6 @@ import * as musicsAPI from '../services/musicsAPI';
 import renderPath from './helpers/renderPath';
 import { defaultUser, musicAPIDefaultResponse} from './mocks';
 
-
 describe('Links de navegação no cabeçalho', () => {
   beforeEach(() => {
     localStorage.setItem('user', JSON.stringify(defaultUser));

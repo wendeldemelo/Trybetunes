@@ -47,9 +47,10 @@ class Favorites extends Component {
         </Container>
         <Container>
           <Card style={ { width: '26rem' } }>
-            <ListGroup variant="flush">
-              {loading ? <Loading /> : favoriteSongs.map((song) => (
-                <ListGroup.Item key={ song.trackId }>
+            {loading ? <Loading /> : favoriteSongs.map((song) => (
+              <ListGroup variant="flush" key={ song.trackId }>
+
+                <ListGroup.Item>
                   <MusicCard
                     key={ song.trackId }
                     onChange={ this.removeFavoriteSongs }
@@ -57,8 +58,9 @@ class Favorites extends Component {
                     song={ song }
                   />
                 </ListGroup.Item>
-              ))}
-            </ListGroup>
+
+              </ListGroup>
+            ))}
           </Card>
         </Container>
       </div>
@@ -67,20 +69,3 @@ class Favorites extends Component {
 }
 
 export default Favorites;
-
-/* <Container>
-<Card style={ { width: '26rem' } }>
-                        <ListGroup variant="flush">
-                        {loading ? <Loading /> : favoriteSongs.map((song) => (
-                            <ListGroup.Item key={ song.trackId }>
-                                <MusicCard
-            key={ song.trackId }
-            onChange={ this.removeFavoriteSongs }
-            checked
-            song={ song }
-          />
-                            </ListGroup.Item>
-                          ))}
-                        </ListGroup>
-                    </Card>
-                    </Container> */

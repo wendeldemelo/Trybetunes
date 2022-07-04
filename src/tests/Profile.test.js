@@ -41,26 +41,26 @@ describe('Exibição de perfil', () => {
         { timeout: 3000 },
       );
 
-      expect(screen.getByText("Editar perfil")).toBeInTheDocument();
+      expect(screen.getByText("Editar Perfil")).toBeInTheDocument();
     });
 
   it('Será validado se ao clicar no link Editar perfil, a navegação acontece corretamente',
-    async () => {
-      renderPath("/profile");
+  async () => {
+    renderPath("/profile");
 
-      await waitForElementToBeRemoved(
-        () => screen.getAllByText('Carregando...'),
-        { timeout: 3000 },
-      );
+    await waitForElementToBeRemoved(
+      () => screen.getAllByText('Carregando...'),
+      { timeout: 3000 },
+    );
 
-      userEvent.click(screen.getByText("Editar perfil"));
+    userEvent.click(screen.getByText("Editar Perfil"));
 
-      await waitFor(
-        () => expect(screen.queryAllByText('Carregando...')).toHaveLength(0),
-        { timeout: 3000 }
-      );
+    await waitFor(
+      () => expect(screen.queryAllByText('Carregando...')).toHaveLength(0),
+      { timeout: 3000 }
+    );
 
-      expect(window.location.pathname).toBe('/profile/edit');
+    expect(window.location.pathname).toBe('/profile/edit');
     });
 
 });
@@ -180,7 +180,7 @@ describe('Formulário de edição de perfil', () => {
         { timeout: 3500 },
       );
 
-      expect(screen.getByText('Editar perfil')).toBeInTheDocument();
+      expect(screen.getByText('Editar Perfil')).toBeInTheDocument();
       expect(window.location.pathname).toBe('/profile');
     });
 });
