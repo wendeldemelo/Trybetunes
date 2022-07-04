@@ -52,13 +52,12 @@ class ProfileEdit extends Component {
     const { loading, formFulfilled } = this.state;
     const { user: { name, image, email, description } } = this.state;
     return (
-      <div>
+      <div data-testid="page-profile-edit">
         <Header />
         {loading
           ? <Loading />
           : (
             <Container
-              data-testid="page-profile-edit"
               className="profile-edit-container"
             >
               <Row>
@@ -100,7 +99,7 @@ class ProfileEdit extends Component {
                     <Form.Group className="mb-3" controlId="input-edit-email">
                       <Form.Label>E-mail *</Form.Label>
                       <Form.Control
-                        type="email"
+                        type="text"
                         data-testid="edit-input-email"
                         value={ email }
                         name="email"

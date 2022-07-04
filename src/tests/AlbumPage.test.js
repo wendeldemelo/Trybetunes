@@ -21,7 +21,7 @@ describe('Lista de músicas do álbum selecionado', () => {
     renderPath("/album/12");
 
     await waitForElementToBeRemoved(
-      () => screen.getAllByText('Carregando...'),
+      () => screen.getAllByTestId('loading'),
       { timeout: 3000 },
     );
 
@@ -42,7 +42,7 @@ describe('Lista de músicas do álbum selecionado', () => {
     renderPath("/album/12");
 
     await waitForElementToBeRemoved(
-      () => screen.getAllByText('Carregando...'),
+      () => screen.getAllByTestId('loading'),
       { timeout: 3000 },
     );
 

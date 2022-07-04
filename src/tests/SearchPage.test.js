@@ -83,7 +83,7 @@ describe('Requisição para pesquisar artistas', () => {
       { timeout: 3000 },
     );
 
-    const searchMessage = screen.getByText(/Resultado de álbuns de: U2/i);
+    const searchMessage = screen.getByText('Resultado de álbuns para: U2');
 
     expect(searchMessage).toBeInTheDocument();
     expect(screen.getByTestId('search-artist-input').value).toBe('');

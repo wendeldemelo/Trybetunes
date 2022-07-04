@@ -51,7 +51,6 @@ class Search extends Component {
       <div data-testid="page-search">
         <Header />
         <Container
-          data-testid="page-search"
           className="container-search"
         >
           <Row className="justify-content-md-center">
@@ -70,7 +69,7 @@ class Search extends Component {
                 <Button
                   variant="primary"
                   type="submit"
-                  ddata-testid="search-artist-button"
+                  data-testid="search-artist-button"
                   disabled={ inputSearchValue.length < MIN_CARACTHERS }
                 >
                   Pesquisar

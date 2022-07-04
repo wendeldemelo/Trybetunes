@@ -50,16 +50,3 @@ MusicCard.propTypes = PropTypes.shape({
 }).isRequired;
 
 export default MusicCard;
-
-/*  <ToggleButton
-  className="mb-2"
-  id={ song.trackId }
-  type="checkbox"
-  variant="outline-primary"
-  checked={ checked }
-  value={ song }
-  onChange={ this.handleChange }
->
-  Favorita
-</ToggleButton>;
-*/

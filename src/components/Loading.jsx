@@ -8,7 +8,12 @@ class Loading extends Component {
         <Row className="justify-content-md-center">
           <Col xs lg="2">
             <Spinner animation="border" role="status">
-              <span className="visually-hidden">Carregando...</span>
+              <span
+                className="visually-hidden"
+                data-testid="loading"
+              >
+                Carregando...
+              </span>
             </Spinner>
           </Col>
         </Row>
